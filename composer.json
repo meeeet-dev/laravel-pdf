@@ -1,0 +1,56 @@
+{
+    "name": "meeeet-dev/laravel-pdf",
+    "description": "Generate PDFs in Laravel with this mPDF wrapper.",
+    "keywords": [
+        "meeeet dev",
+        "mpdf",
+        "pdf",
+        "Laravel",
+        "Laravel 7",
+        "Laravel 8",
+        "Laravel PDF"
+    ],
+    "homepage": "https://github.com/meeeet-dev/laravel-pdf",
+    "license": "MIT",
+    "authors": [{
+        "name": "Meeeet Dev",
+        "email": "meeeet.dev@gmail.com",
+        "role": "Developer"
+    }],
+    "require": {
+        "php": "^7.0|^8.0",
+        "mpdf/mpdf": "^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.4",
+        "orchestra/testbench": "^3.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "MeeeetDev\\LaravelPdf\\": "src/LaravelPdf"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MeeeetDev\\LaravelPdf\\Test\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit --colors=always"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MeeeetDev\\LaravelPdf\\PdfServiceProvider"
+            ],
+            "aliases": {
+                "PDF": "MeeeetDev\\LaravelPdf\\Facades\\Pdf"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
