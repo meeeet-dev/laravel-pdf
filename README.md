@@ -21,6 +21,7 @@ To start using Laravel, add the Service Provider and the Facade to your `config/
 ]
 ```
 
+(Optional) Add the Facade alias to your `config/app.php`:
 ```php
 'aliases' => [
 	// ...
@@ -31,7 +32,7 @@ To start using Laravel, add the Service Provider and the Facade to your `config/
 Now, you should publish package's config file to your config directory by using following command:
 
 ```
-php artisan vendor:publish
+php artisan vendor:publish --provider="MeeeetDev\LaravelPdf\PdfServiceProvider"
 ```
 
 ## Basic Usage
@@ -39,13 +40,13 @@ php artisan vendor:publish
 To use Laravel PDF add something like this to one of your controllers. You can pass data to a view in `/resources/views`.
 
 ```php
-use PDF;
+use MeeeetDev\LaravelPdf\Facades\Pdf;
 
 function generate_pdf() {
 	$data = [
 		'foo' => 'bar'
 	];
-	$pdf = PDF::loadView('pdf.document', $data);
+	$pdf = Pdf::loadView('pdf.document', $data);
 	return $pdf->stream('document.pdf');
 }
 ```
@@ -77,7 +78,7 @@ return [
 To override this configuration on a per-file basis use the fourth parameter of the initializing call like this:
 
 ```php
-PDF::loadView('pdf', $data, [], [
+Pdf::loadView('pdf', $data, [], [
   'format' => 'A5-L'
 ])->save($pdfFilePath);
 ```
@@ -89,7 +90,7 @@ $config = ['instanceConfigurator' => function($mpdf) {
     $mpdf->SetDocTemplate(/path/example.pdf, true);
 }]
  
-PDF::loadView('pdf', $data, [], $config)->save($pdfFilePath);
+Pdf::loadView('pdf', $data, [], $config)->save($pdfFilePath);
 ```
 
 ## Headers and Footers
@@ -163,13 +164,13 @@ The passwords are optional.
 There are a fews permissions: `'copy'`, `'print'`, `'modify'`, `'annot-forms'`, `'fill-forms'`, `'extract'`, `'assemble'`, `'print-highres'`.
 
 ```php
-use PDF;
+use MeeeetDev\LaravelPdf\Facades\Pdf;
 
 function generate_pdf() {
 	$data = [
 		'foo' => 'bar'
 	];
-	$pdf = PDF::loadView('pdf.document', $data);
+	$pdf = Pdf::loadView('pdf.document', $data);
 	$pdf->SetProtection(['copy', 'print'], '', 'pass');
 	return $pdf->stream('document.pdf');
 }

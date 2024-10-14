@@ -6,9 +6,9 @@ return [
 	'author'                => '',
 	'subject'               => '',
 	'keywords'              => '',
-	'creator'               => 'Laravel Pdf',
+	'creator'               => 'Pdf',
 	'display_mode'          => 'fullpage',
-	'tempDir'               => base_path('../temp/'),
+	'tempDir'               => storage_path('app/tmp'),
 	'pdf_a'                 => false,
 	'pdf_a_auto'            => false,
 	'icc_profile_path'      => ''
