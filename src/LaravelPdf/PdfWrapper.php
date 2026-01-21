@@ -13,9 +13,9 @@ class PdfWrapper {
 	 * @param string $html
 	 * @return Pdf
 	 */
-	public function loadHTML($html, $config = [])
+	public function loadHTML($html, $config = [], $mergeConfig = true)
 	{
-		return new Pdf($html, $config);
+		return new Pdf($html, $config, $mergeConfig);
 	}
 
 	/**
@@ -24,9 +24,9 @@ class PdfWrapper {
 	 * @param string $file
 	 * @return Pdf
 	 */
-	public function loadFile($file, $config = [])
+	public function loadFile($file, $config = [], $mergeConfig = true)
 	{
-		return new Pdf(File::get($file), $config);
+		return new Pdf(File::get($file), $config, $mergeConfig);
 	}
 
 	/**
@@ -37,9 +37,9 @@ class PdfWrapper {
 	 * @param array $mergeData
 	 * @return Pdf
 	 */
-	public function loadView($view, $data = [], $mergeData = [], $config = [])
+	public function loadView($view, $data = [], $mergeData = [], $config = [], $mergeConfig = true)
 	{
-		return new Pdf(View::make($view, $data, $mergeData)->render(), $config);
+		return new Pdf(View::make($view, $data, $mergeData)->render(), $config, $mergeConfig);
 	}
 
 }
